@@ -1,3 +1,5 @@
+package day01;
+
 import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

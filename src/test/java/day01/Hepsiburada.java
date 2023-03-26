@@ -1,12 +1,12 @@
+package day01;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.util.TreeMap;
-
-public class Hepsiburada_Coocies {
+public class Hepsiburada {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.google.driver", "src/resorcues/drivers/chromedriver.exe");
         ChromeDriver driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*"));
@@ -15,6 +15,9 @@ public class Hepsiburada_Coocies {
         driver.get("https://www.hepsiburada.com");
         driver.manage().window().maximize();
 
+        String baslik1 = driver.getTitle(); //Sayfanın başlığını string olarak getirir.
+
+        System.out.println(baslik1);
         Thread.sleep(10000);
 
         //arama kutusuna iphone yazıp aratin
