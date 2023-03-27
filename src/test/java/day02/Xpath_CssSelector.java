@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
+import java.util.List;
 
 public class Xpath_CssSelector {
     public static void main(String[] args) throws InterruptedException {
@@ -47,6 +48,13 @@ public class Xpath_CssSelector {
                 "        }", Keys.ENTER);
 
         Thread.sleep(2000);
+
+        System.out.println("========================================================================");
+        System.out.println(driver.getPageSource()); //sayfanin kaynak kodalarini yazdirir. bunu str atip icinde kelime arariz
+        String source= driver.getPageSource();
+        System.out.println("========================================================================");
+
+        System.out.println(driver.getWindowHandle());// hash degerini yazidir
         driver.close();
     }
 }
