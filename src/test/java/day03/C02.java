@@ -2,6 +2,7 @@ package day03;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -28,7 +29,7 @@ public class C02 {
     @After
     public void tearDown() throws InterruptedException {
         Thread.sleep(3000);
-       driver.close();
+            driver.close();
     }
 
     @Test
@@ -64,12 +65,9 @@ public class C02 {
         Thread.sleep(2000);
 
         //- 90 defa basıldığını doğrulayınız
-        List<WebElement> deleteCount=driver.findElements(By.xpath("//button[@onclick='deleteElement()']"));
-        int deleteButtonEnd=deleteCount.size();
-        if (elemanCount-deleteButtonEnd==10)
-            System.out.println("90 kere basilmis");
-        else
-            System.out.println("90 kere basilmamis");
+        List<WebElement> deleteButtonList = driver.findElements(By.xpath("//*[@onclick='deleteElement()']"));
+        int kalanDeleteButton = deleteButtonList.size()-90;
+        Assert.assertEquals(kalanDeleteButton,deleteButtonList.size());
         Thread.sleep(2000);
         }
 
