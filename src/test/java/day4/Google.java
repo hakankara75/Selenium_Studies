@@ -34,13 +34,12 @@ public class Google {
     @AfterClass
     public static void afterClass() throws InterruptedException {
         Thread.sleep(3000);
-     // driver.close();
+     driver.close();
     }
 
     @Before
     public void setUp() throws InterruptedException {
         //-Before methodunda http://www.google.com adresine gidin
-
         driver.get("http://www.google.com");
         Thread.sleep(2000);
     }
