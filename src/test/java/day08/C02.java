@@ -22,6 +22,7 @@ public class C02 extends TestBase {
         driver.findElement(By.xpath("(//span[@data-id='10'])[1]")).click();
                threadSleep(3);
 
+
 //Multi Selection With Cascade Option Select menusunde choice 2 3 u secin
         driver.findElement(By.xpath("//input[@id='justAnInputBox1']")).click();
         driver.findElement(By.xpath("(//span[@data-id='12'])[2]")).click();

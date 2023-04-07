@@ -6,9 +6,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
@@ -112,43 +114,27 @@ public class SignUp {
         Thread.sleep(2000);
 
 //           12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-        WebElement firstName = driver.findElement(By.xpath("//input[@id='first_name']"));
-        firstName.sendKeys("user");
-
-        WebElement lastName = driver.findElement(By.xpath("//input[@id='last_name']"));
-        lastName.sendKeys("useroglu");
-
-        WebElement company = driver.findElement(By.xpath("//input[@id='company']"));
-        company.sendKeys("userogluAS");
-
-        WebElement address1 = driver.findElement(By.xpath("//input[@id='address1']"));
-        address1.sendKeys("Beypazari");
-
-        WebElement address2 = driver.findElement(By.xpath("//input[@id='address2']"));
-        address2.sendKeys("Ankara");
-
-        WebElement country = driver.findElement(By.xpath("//select[@id='country']"));
-        Select tr = new Select(country);
-        country.sendKeys("India");
-
-        //State, City, Zipcode, Mobile Number
-        WebElement state = driver.findElement(By.xpath("//input[@id='state']"));
-        state.sendKeys("Delhi");
-
-        WebElement city = driver.findElement(By.xpath("//input[@id='city']"));
-        city.sendKeys("NewDelhi");
-
-        WebElement zip = driver.findElement(By.xpath("//input[@id='zipcode']"));
-        zip.sendKeys("2346578");
-
-        WebElement tel = driver.findElement(By.xpath("//input[@id='mobile_number']"));
-        tel.sendKeys("768735378");
-        Thread.sleep(2000);
-
-//           13. Click 'Create Account button'
-        WebElement button = driver.findElement(By.xpath("//button[@data-qa='create-account']"));
-        button.click();
-        Thread.sleep(3000);
+        driver.findElement(By.id("id_gender2")).click();
+        driver.findElement(By.id("password")).sendKeys("123456");
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.TAB).sendKeys("12")
+                .sendKeys(Keys.TAB).sendKeys("March").
+                sendKeys(Keys.TAB).sendKeys("2014").
+                sendKeys(Keys.TAB).
+                sendKeys(Keys.TAB).
+                sendKeys(Keys.TAB)
+                //10. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
+                .sendKeys("Ankara").sendKeys(Keys.TAB)
+                .sendKeys("Adana").sendKeys(Keys.TAB)
+                .sendKeys("bireysel").sendKeys(Keys.TAB)
+                .sendKeys("yeni mah. 215. sok").sendKeys(Keys.TAB).
+                sendKeys(Keys.TAB).sendKeys("Canada").sendKeys(Keys.TAB).
+                sendKeys("Montreal").sendKeys(Keys.TAB).
+                sendKeys("Toronto").sendKeys(Keys.TAB).
+                sendKeys("437834789").sendKeys(Keys.TAB).
+                sendKeys("9832141783589").
+                //11. Click 'Create Account button'
+                        sendKeys(Keys.ENTER).perform();
 
 //           14. Verify that 'ACCOUNT CREATED!' is visible
 
