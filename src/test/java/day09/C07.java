@@ -1,5 +1,6 @@
 package day09;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -32,7 +33,7 @@ public class C07 extends TestBase {
         WebElement homePage= driver.findElement(By.xpath("//body"));
         assertTrue(homePage.isDisplayed());
         Actions actions=new Actions(driver);
-        actions.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN).perform();
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
 
 //        4. Click 'View Product' for any product on home page
         threadSleep(3);
@@ -44,10 +45,10 @@ public class C07 extends TestBase {
         assertTrue(detail.isDisplayed());
 
 //        6. Increase quantity to 4
-        WebElement increase= driver.findElement(By.xpath("//input[@value='3']"));
+        WebElement increase= driver.findElement(By.id("quantity"));
         actions.moveToElement(increase);
         threadSleep(3);
-        increase.sendKeys("4");
+        increase.sendKeys("4",Keys.TAB,Keys.ENTER);
         Dimension firstQuantity=increase.getSize();
         System.out.println(firstQuantity);
 
@@ -55,11 +56,11 @@ public class C07 extends TestBase {
         driver.findElement(By.xpath("//button[@class='btn btn-default cart']")).click();
 
 //        8. Click 'View Cart' button
-        driver.findElement(By.xpath("//button[text()='3']")).click();
+        driver.findElement(By.xpath("//u[text()='View Cart']")).click();
 
 //        9. Verify that product is displayed in cart page with exact quantity
-                Dimension secondQuantity=increase.getSize();
-        System.out.println(secondQuantity);
+                WebElement exactQuantity=driver.findElement(By.xpath("//button[@class='disabled']"));
+        Assert.assertTrue(exactQuantity.isDisplayed());
 
     }
 }

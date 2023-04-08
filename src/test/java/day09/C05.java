@@ -46,7 +46,25 @@ public class C05 extends TestBase {
             actions.moveByOffset(7,0 );
         }
                 actions.release().build().perform();
+//2.yol
+        actions.moveToElement(canvas).clickAndHold().moveByOffset(0, -200).moveByOffset(100, 0).click()
+                .moveToElement(canvas, 0, 0).clickAndHold().moveByOffset(100, 0).click()
+                .moveToElement(canvas, 0, 0).clickAndHold().moveByOffset(0, -100).moveByOffset(100, 0).click().moveToElement(canvas, 0, 0).build().perform();
+        threadSleep(2);
+        // R
+        actions.moveByOffset(200, 0).clickAndHold().moveByOffset(0, -200).moveByOffset(100, 0).moveByOffset(0,100).moveByOffset(-100, 0).moveByOffset(100, 100).build().perform();
+        threadSleep(2);
 
+        //3.yol
+        WebElement cizim = driver.findElement(By.tagName("canvas"));
+        Actions ekrandaGorunenler = new Actions(driver);
+        ekrandaGorunenler.clickAndHold(cizim)
+                .moveByOffset(40, 50)
+                .moveByOffset(60, -40)
+                .moveByOffset(-60, -60)
+                .moveByOffset(-70, 50)
+                .release()
+                .perform();
 //- Çizimden sonra clear butonuna basınız
         WebElement clear = driver.findElement(By.xpath("//button[@data-action='clear']"));
         clear.click();
