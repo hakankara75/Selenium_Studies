@@ -1,9 +1,7 @@
 package day06;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 
 public class C04 extends TestBase {
@@ -14,7 +12,7 @@ public class C04 extends TestBase {
         threadSleep(2);
 
 //        -Alert with OK karşısındaki click the button to display an alert box: butonuna tıklayınız
-        xpathClick("//button[@class='btn btn-danger']");
+        findByXpathClick("//button[@class='btn btn-danger']");
 
 //        -Çıkan alert üzerindeki yazıyı konsola yazdırınız ve tamam butonuna basınız
         System.out.println(driver.switchTo().alert().getText());
@@ -42,7 +40,7 @@ public class C04 extends TestBase {
         System.out.println(message);
 
 // -Çıkan mesajın 'Hello <isminiz> How are you today' yazdığını doğrulayınız
-        textContainsAssertTrue(message, "Hello Hakan How are you today");
+        asserTextContainsAssertTrue(message, "Hello Hakan How are you today");
 
 
     }

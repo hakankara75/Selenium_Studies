@@ -2,7 +2,6 @@ package utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -12,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
+
+import static org.junit.Assert.assertTrue;
 
 public abstract class TestBase {
     //TestBase class'indan obje olusturmanin onune gecilmesi icin abstract yapilabilir
@@ -41,15 +42,13 @@ public abstract class TestBase {
         }
     }
 
-    public void xpath(String str){
-        driver.findElement(By.xpath(str));
-    }
-    public void xpathClick(String str){
-        driver.findElement(By.xpath(str)).click();
+    public WebElement findXpathWebelement(String str){
+       WebElement w= driver.findElement(By.xpath(str));
+       return w;
     }
 
-    public void textContainsAssertTrue(String str, String atr){
-        Assert.assertTrue(str.contains(atr));
+    public void asserTextContainsAssertTrue(String str, String atr){
+        assertTrue(str.contains(atr));
     }
 
     public void switchAlertAccept(){
@@ -64,12 +63,36 @@ public abstract class TestBase {
         driver.switchTo().alert().sendKeys(str);
     }
 
-    public void findByXpath(String str){
-        driver.findElement(By.xpath(str));
+    public String findByXpathString(String str){
+        String location= driver.findElement(By.xpath(str)).getText();
+        return location;
+    }
+
+    public void findByXpathClick(String str){
+        driver.findElement(By.xpath(str)).click();
     }
 
     public void pageDown(){
         Actions actions=new Actions(driver);
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+    }
+
+    public void pageUp(){
+        Actions actions=new Actions(driver);
+        actions.sendKeys(Keys.PAGE_UP).perform();
+    }
+
+    public void arrowDown(){
+        Actions actions=new Actions(driver);
+        actions.sendKeys(Keys.ARROW_DOWN).perform();
+    }
+
+    public void arrowUp(){
+        Actions actions=new Actions(driver);
+        actions.sendKeys(Keys.ARROW_UP).perform();
+    }
+
+    public void assertDisplayedWebelement(WebElement a){
+        assertTrue(a.isDisplayed());
     }
 }

@@ -53,7 +53,7 @@ public class C02 extends TestBase {
         email.sendKeys("pass1@gmail.com");
 
         driver.findElement(By.xpath("//button[@data-qa='signup-button']")).click();
-""
+
         driver.findElement(By.id("uniform-id_gender1")).click();
 
         WebElement pass= driver.findElement(By.id("password"));
