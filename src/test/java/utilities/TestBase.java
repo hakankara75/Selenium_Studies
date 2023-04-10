@@ -12,6 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public abstract class TestBase {
@@ -95,4 +96,12 @@ public abstract class TestBase {
     public void assertDisplayedWebelement(WebElement a){
         assertTrue(a.isDisplayed());
     }
+
+    public void scrollToElement(String str){
+        WebElement bottom = driver.findElement(By.xpath(str));
+        Actions actions=new Actions(driver);
+        actions.scrollToElement(bottom).perform();
+        //bu kod locati alinan elemana kadar sayfayi asagi goturur
+    }
+
 }
