@@ -98,21 +98,52 @@ public class C02 extends TestBase {
         findXpathWebelement("//button[@data-qa='create-account']").click();
 
 //        Verify 'ACCOUNT CREATED!' and click 'Continue' button
-        String actualR = findByXpathString("//b[text()='Enter Account Information']");
+        threadSleep(2);
+        String actualR = findByXpathString("//b[text()='Account Created!']");
         String expectedR = "ACCOUNT CREATED!";
-        assertNotEquals(actualR, expectedR);
+        assertEquals(actualR, expectedR);
 
+findXpathWebelement("//a[@data-qa='continue-button']").click();
 
 //        7. Verify ' Logged in as username' at top
-
+String actualName= findByXpathString("//b[text()='Hakan']");
+String expectedName="Hakan";
 
 //        8. Add products to cart
+        scrollToElement("(//a[@data-product-id='5'])[3]");
+        threadSleep(3);
+        findByXpathClick("(//a[@data-product-id='5'])[3]");
+
 //        9. Click 'Cart' button
+scrollToElement("(//a[@href='/view_cart'])[1]");
+findByXpathClick("(//a[@href='/view_cart'])[1]");
+
 //        10. Verify that cart page is displayed
+String actualSelected=findByXpathString("//a[@href='/product_details/5']");
+String expectedSelected="Winter Top";
+assertEquals(actualSelected, expectedSelected);
+
 //        11. Click Proceed To Checkout
+findByXpathClick("//a[text()='Proceed To Checkout']");
+
 //        12. Verify that the delivery address is same address filled at the time registration of account
+        String actualAdress= findByXpathString("//li[@class='address_firstname address_lastname']");
+        String expectedAdress="Hakan";
+        assertEquals(actualAdress,expectedAdress);
+
 //        13. Verify that the billing address is same address filled at the time registration of account
+        String actualBilling= findByXpathString("//li[@class='address_firstname address_lastname']");
+        String expectedBilling="Hakan";
+        assertEquals(actualAdress,expectedAdress);
+
 //        14. Click 'Delete Account' button
+findByXpathClick("//a[@href='/delete_account']");
+threadSleep(2);
+
 //        15. Verify 'ACCOUNT DELETED!' and click 'Continue' button
+threadSleep(2);
+         String actualDeleted = findByXpathString("//b[text()='Account Deleted!']");
+        String expectedDeleted = "ACCOUNT CREATED!";
+        assertEquals(actualR, expectedR);
     }
 }
