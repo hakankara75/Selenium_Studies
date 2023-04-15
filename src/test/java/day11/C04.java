@@ -3,10 +3,17 @@ package day11;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.TestBase;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.Duration;
 
 import static org.junit.Assert.assertTrue;
 
@@ -36,7 +43,7 @@ public class C04 extends TestBase {
 22. Verify 'ACCOUNT DELETED!' and click 'Continue' button
      */
     @Test
-    public void test() {
+    public void shadowRootClosed() {
 //        2. Navigate to url 'http://automationexercise.com'
         driver.get("http://automationexercise.com");
 
@@ -45,12 +52,14 @@ public class C04 extends TestBase {
         assertTrue(homePage.isDisplayed());
 
 //        4. Add products to cart
+
+        reklamKapat();
         Actions actions = new Actions(driver);
-        WebElement product = driver.findElement(By.xpath("//img[@src='/get_product_picture/8']"));
+        WebElement product = driver.findElement(By.xpath("(//a[text()='Add to cart'])[7]"));
         actions.scrollToElement(product).perform();
-        arrowDown();
-        threadSleep(3);
-        driver.findElement(By.xpath("(//a[@data-product-id='5'])[2]")).click();
+        arrowDown(); arrowDown();arrowDown();
+               threadSleep(2);
+        driver.findElement(By.xpath("(//a[text()='Add to cart'])[7]")).click();
 
 
 //        5. Click 'Cart' button
@@ -70,18 +79,18 @@ public class C04 extends TestBase {
         findByXpathClick("//u[text()='Register / Login']");
 
 //        9. Fill all details in Signin and create account
+        reklamKapat();
         findXpathWebelement("//input[@name='name']").sendKeys("Hakan");
-        findXpathWebelement("//input[@email='email']").sendKeys("Hakan@hakan.com");
+        findXpathWebelement("(//input[@name='email'])[2]").sendKeys("Hakan@hakan.com");
         threadSleep(2);
-        findByXpathString("//button[@data-qa='signup-button']");
+        findByXpathClick("//button[@data-qa='signup-button']");
 
 //        10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
+reklamKapat();
+        threadSleep(2);
         driver.findElement(By.id("id_gender1")).click();
         driver.findElement(By.id("password")).sendKeys("Hakan");
-        WebElement company = driver.findElement(By.id("company"));
-        threadSleep(2);
-        actions.scrollToElement(company);
-        actions.scrollToElement(company);
+
 
         WebElement days = driver.findElement(By.id("days"));
         Select select = new Select(days);
@@ -89,11 +98,17 @@ public class C04 extends TestBase {
 
         WebElement months = driver.findElement(By.id("months"));
         new Select(months);
-        select.selectByIndex(8);
+        select.selectByVisibleText("8");
 
         WebElement years = driver.findElement(By.id("years"));
         new Select(years);
-        select.selectByIndex(1999);
+        select.selectByIndex(12);
+        threadSleep(2);
+
+        WebElement company = driver.findElement(By.id("company"));
+        threadSleep(2);
+        actions.scrollToElement(company);
+        actions.scrollToElement(company);
 
         driver.findElement(By.id("first_name")).sendKeys("Hakan");
         driver.findElement(By.id("last_name")).sendKeys("Hakan");
@@ -117,6 +132,7 @@ public class C04 extends TestBase {
         findByXpathClick("//button[@data-qa='create-account']");
 
 //        11. Verify 'ACCOUNT CREATED!' at top
+        reklamKapat();
         threadSleep(2);
         WebElement accountText=findXpathWebelement("//b[text()='Account Created!']");
         assertTrue(accountText.isDisplayed());
@@ -166,13 +182,33 @@ threadSleep(2);
         Assert.assertTrue(alert.isDisplayed());
 
 //        19. Click 'Download Invoice' button and verify invoice is downloaded successfully.
-findByXpathClick("//a[@href='/download_invoice/0']");
-Actions dosya=actions.sendKeys(System.getProperty("user.home")+"/Downloads/invoice.txt");
+       findByXpathClick("//a[@href='/download_invoice/0']");
 
-
+        String userHome = System.getProperty("user.home")+"/Downloads/invoice.txt";
+        boolean isExist= Files.exists(Paths.get(userHome));
+        assertTrue(isExist);
+        threadSleep(2);
 
 //        20. Click 'Continue' button
+findByXpathClick("//a[@data-qa='continue-button']");
+threadSleep(2);
+
 //        21. Click 'Delete Account' button
+findByXpathClick("//a[@href='/delete_account']");
+threadSleep(2);
+
 //        22. Verify 'ACCOUNT DELETED!' and click 'Continue' button
+findByXpathClick("//b[text()='Account Deleted!']");
+
+    }
+  public void   reklamKapat(){
+      try{ //alttan açılıp kapanan reklamı kapatmak icin shadow root (closed)
+          driver.get("https://automationexercise.com/");
+          driver.findElement(By.xpath("//div[@class='grippy-host']")).click();
+          threadSleep(2);
+          driver.findElement(By.xpath("//path[@stroke='#FAFAFA']")).click();
+      }catch (Exception e){
+
+      }
     }
 }
