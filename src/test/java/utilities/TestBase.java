@@ -1,16 +1,20 @@
 package utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -102,6 +106,35 @@ public abstract class TestBase {
         Actions actions=new Actions(driver);
         actions.scrollToElement(bottom).perform();
         //bu kod locati alinan elemana kadar sayfayi asagi goturur
+    }
+
+    public static void tumSayfaScreenShoot(){
+        String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String dosyaYolu = "TestOutput/screenshot"+tarih+".png";
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        try {
+            FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File(dosyaYolu));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //WebElement ScreenShot
+    public static void webElementScreenShoot(WebElement element){
+        String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String dosyaYolu = "TestOutput/webElementScreenshot"+tarih+".png";
+        try {
+            FileUtils.copyFile(element.getScreenshotAs(OutputType.FILE),new File(dosyaYolu));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void switchToWindow(int sayi){
+        List<String> tumWindowHandles = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tumWindowHandles.get(sayi));
+    }
+    //SwitchToWindow2
+    public static void window(int sayi){
+        driver.switchTo().window(driver.getWindowHandles().toArray()[sayi].toString());
     }
 
 }
