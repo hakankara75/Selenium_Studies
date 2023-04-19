@@ -11,6 +11,9 @@ import java.time.Duration;
 import static org.junit.Assert.assertTrue;
 
 public class C04 extends TestBase {
+    //https://chercher.tech/practice/explicit-wait-sample-selenium-webdriver sayfasına gidelim
+    //"Enable button after 10 seconds" butonuna basalım
+    //Butonun tıklanabilir olduğunu test edin
     @Test
     public void name() {
 
