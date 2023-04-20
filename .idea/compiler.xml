@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Batch129Selenium_MavenJunit" />
+        <module name="Selenium_Studies" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Selenium_Studies" target="19" />
+      <module name="Batch129Selenium_MavenJunit" target="19" />
     </bytecodeTargetLevel>
   </component>
 </project>
