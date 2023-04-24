@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import utilities.TestBase;
+
 /*
 2. Navigate to url 'http://automationexercise.com'
 3. Click on 'Products' button
@@ -67,6 +68,6 @@ asserTextContainsAssertTrue(actualWrite, expectedWrite);
         //2.yol
                 WebElement message= findXpathWebelement("//span[@style='font-size: 20px;']");
         assertDisplayedWebelement(message);
-
+threadSleep(3000);
     }
 }

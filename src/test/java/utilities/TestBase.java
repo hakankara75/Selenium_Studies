@@ -5,6 +5,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.interactions.Actions;
 import org.junit.After;
 import org.junit.Before;
 import com.aventstack.extentreports.ExtentReports;
@@ -61,6 +62,7 @@ public abstract class TestBase {
         extentHtmlReporter.config().setDocumentTitle("Extent Report");
         extentHtmlReporter.config().setReportName("Smoke Test Raporu");
         extentTest = extentReports.createTest("ExtentTest", "Test Raporu");
+
     }
 
     @After
@@ -178,6 +180,47 @@ public abstract class TestBase {
     //SwitchToWindow2
     public static void window(int sayi) {
         driver.switchTo().window(driver.getWindowHandles().toArray()[sayi].toString());
+    }
+    //bu metot ile herhangi bir webelemente JavascriptExecutor kullanarak tiklayabilirim
+    public void clickByJavaScript(WebElement webElement){
+        JavascriptExecutor jse= (JavascriptExecutor) driver;
+
+        jse.executeScript("arguments[0].click();", webElement);
+
+    }
+
+    public void scrollIntoViewByJavaScript(WebElement webElement){
+        JavascriptExecutor jse=(JavascriptExecutor) driver;//Casting
+        jse.executeScript("arguments[0].scrollIntoView(true);",webElement);
+
+    }
+
+    //bu metot ile sayfayi en alta kaydirabilirim
+    public void scrollEndByJavaScript(){
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+    }
+
+    //bu metot ile sayfayi en yukari kaydirabilirim
+    public void scrollTopByJavaScript(){
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, -document.body.scrollHeight);");
+    }
+
+    public void typeWithJavaScript(WebElement webElement, String str){
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].setAttribute('value', '"+str+"')", webElement);
+    }
+
+    //bu metot ile attribute degerleri ile texti alabilirim
+    public String getValueByJavaScript(String id, String attributeName){
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        String string= js.executeScript("return document.getElementById('"+id+"')."+attributeName+"").toString();
+        System.out.println(string);
+        return string;
+        //        NOT: document.querySelector("p").value;  -> TAG KULLANILABILIR
+//             document.querySelector(".example").value; -> CSS DEGERI KULLANILABILIR
+//             document.querySelector("#example").value; -> CSS DEGERI KULLANILABILIR
     }
 
 }

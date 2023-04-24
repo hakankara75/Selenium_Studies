@@ -3,6 +3,7 @@ package day10;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -40,6 +41,7 @@ public class C01 extends TestBase {
         Assert.assertTrue(homePage.isDisplayed());
 
 //4. Add products to cart
+        actionReklamKapat();
         Actions actions=new Actions(driver);
         actions.sendKeys(Keys.PAGE_DOWN, Keys.PAGE_DOWN).perform();
 
@@ -50,6 +52,7 @@ public class C01 extends TestBase {
 
 
 //        5. Click 'Cart' button
+        actionReklamKapat();
         driver.findElement(By.xpath("//u[text()='View Cart']")).click();
 //        actions.sendKeys(Keys.PAGE_UP, Keys.PAGE_UP).perform();
 //        driver.findElement(By.xpath("//a[@data-product-id='4']")).click();
@@ -59,12 +62,15 @@ public class C01 extends TestBase {
         Assert.assertTrue(cartPage.isDisplayed());
 
 //        7. Click Proceed To Checkout
+        actionReklamKapat();
         driver.findElement(By.xpath("//a[@class='btn btn-default check_out']")).click();
 
 //        8. Click 'Register / Login' button
         driver.findElement(By.xpath("//u[text()='Register / Login']")).click();
 
 //        9. Fill all details in Signup and create account
+        //try-catch alttan açılıp kapanan reklamı kapatmak icin shadow root (closed)
+       actionReklamKapat();
         WebElement name= driver.findElement(By.xpath("//input[@type='text']"));
         name.sendKeys("pass1");
 
@@ -131,10 +137,13 @@ public class C01 extends TestBase {
         driver.findElement(By.xpath("//a[@data-qa='continue-button']")).click();
 
 //        11. Verify ' Logged in as username' at top
+        actionReklamKapat();
         WebElement logged= driver.findElement(By.xpath("//*[text()=' Logged in as ']"));
         Assert.assertTrue(logged.isDisplayed());
 
 //        12.Click 'Cart' button
+        //try-catch alttan açılıp kapanan reklamı kapatmak icin shadow root (closed)
+      actionReklamKapat();
         driver.findElement(By.xpath("(//a[@href='/view_cart'])[1]")).click();
 
 //        13. Click 'Proceed To Checkout' button
@@ -155,6 +164,9 @@ public class C01 extends TestBase {
         driver.findElement(By.xpath("//a[@href='/payment']")).click();
 
 //        16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
+        //try-catch alttan açılıp kapanan reklamı kapatmak icin shadow root (closed)
+        actionReklamKapat();
+
         WebElement cardName= driver.findElement(By.xpath("//input[@name='name_on_card']"));
         cardName.sendKeys("sfhhhhg");
 
@@ -173,18 +185,30 @@ public class C01 extends TestBase {
         expYear.sendKeys("2025");
 
 //        17. Click 'Pay and Confirm Order' button
+        actionReklamKapat();
         driver.findElement(By.id("submit")).click();
 
 //        18. Verify success message 'Your order has been placed successfully!'
 
         WebElement SiparisMsj2 = driver.findElement(By.xpath("//div[@class='alert-success alert']"));
-        Assert.assertTrue(SiparisMsj2.isDisplayed());
+             Assert.assertTrue(SiparisMsj2.isDisplayed());
 
 //        19. Click 'Delete Account' button
+        actionReklamKapat();
         driver.findElement(By.xpath("//a[@href='/delete_account']")).click();
 
 //        20. Verify 'ACCOUNT DELETED!' and click 'Continue' button
         WebElement delete= driver.findElement(By.xpath("//b[text()='Account Deleted!']"));
         Assert.assertTrue(delete.isDisplayed());
     }
+    public void actionReklamKapat(){
+        try {
+            driver.findElement(By.xpath("//div[@class='grippy-host']")).click();
+            driver.findElement(By.xpath("//path[@stroke='#FAFAFA']")).click();
+            Thread.sleep(2000);
+        }catch (Exception s){
+
+        }
+    }
+
 }

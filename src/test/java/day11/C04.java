@@ -67,6 +67,7 @@ public class C04 extends TestBase {
         driver.findElement(By.xpath("(//a[@href='/view_cart'])[1]")).click();
 
 //        6. Verify that cart page is displayed
+        reklamKapat();
         threadSleep(2);
         WebElement cartPage = driver.findElement(By.xpath("//div[@class='breadcrumbs']"));
         assertTrue(cartPage.isDisplayed());
