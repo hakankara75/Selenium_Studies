@@ -52,7 +52,7 @@ public class C07 extends TestBase {
 //	Verify the dropdown has Option 2 text.
         for (WebElement w : list) {
             String str = w.getText();
-            asserTextContainsAssertTrue(str, "Option 2");
+            assertTextContainsAssertTrue(str, "Option 2");
         }
 
 //	Create method printFirstSelectedOptionTest Print first selected option.

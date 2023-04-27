@@ -40,7 +40,7 @@ public class C04 extends TestBase {
         System.out.println(message);
 
 // -Çıkan mesajın 'Hello <isminiz> How are you today' yazdığını doğrulayınız
-        asserTextContainsAssertTrue(message, "Hello Hakan How are you today");
+        assertTextContainsAssertTrue(message, "Hello Hakan How are you today");
 
 
     }

@@ -23,7 +23,7 @@ public class C05 extends TestBase {
         pageDown();
         String categories = findByXpathString("//h2[text()='Category']");
         String expectedResult= "CATEGORY";
-        asserTextContainsAssertTrue(categories,expectedResult);
+        assertTextContainsAssertTrue(categories,expectedResult);
 
 //4. Click on 'Women' category
         arrowDown();arrowDown();arrowDown();
@@ -36,7 +36,7 @@ findByXpathClick("//a[@href='#Women']");
 String actualWomenProducts=findByXpathString("//h2[text()='Women - Saree Products']");
         System.out.println(actualWomenProducts);
 String expectedWomenProducts= "WOMEN - SAREE PRODUCTS";
-asserTextContainsAssertTrue(actualWomenProducts,expectedWomenProducts);
+assertTextContainsAssertTrue(actualWomenProducts,expectedWomenProducts);
 
 //            7. On left side bar, click on any sub-category link of 'Men' category
 findByXpathClick("//a[@href='#Men']");
@@ -45,7 +45,7 @@ findByXpathClick("//a[@href='/category_products/3']");
 //8. Verify that user is navigated to that category page
         String actualMenProducts=findByXpathString("//h2[text()='Men - Tshirts Products']");
         String expectedMenProducts= "MEN - TSHIRTS PRODUCTS";
-        asserTextContainsAssertTrue(actualMenProducts,expectedMenProducts);
+        assertTextContainsAssertTrue(actualMenProducts,expectedMenProducts);
 
     }
 }

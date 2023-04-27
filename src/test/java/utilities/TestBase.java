@@ -8,20 +8,9 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.interactions.Actions;
 import org.junit.After;
 import org.junit.Before;
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.io.FileUtils;
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -85,7 +74,7 @@ public abstract class TestBase {
         return w;
     }
 
-    public void asserTextContainsAssertTrue(String str, String atr) {
+    public void assertTextContainsAssertTrue(String str, String atr) {
         assertTrue(str.contains(atr));
     }
 

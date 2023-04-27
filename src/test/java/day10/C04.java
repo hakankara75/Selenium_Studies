@@ -43,7 +43,7 @@ x.click();
 //        8. Verify that product is removed from the cart
         String actualResult=findByXpathString("//b[text()='Cart is empty!']");
         String expectedResult="Cart is empty!";
-        asserTextContainsAssertTrue(actualResult,expectedResult);
+        assertTextContainsAssertTrue(actualResult,expectedResult);
 
 
 

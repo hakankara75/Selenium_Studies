@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -166,8 +167,13 @@ public class C02 extends TestBase {
         driver.findElement(By.id("submit")).click();
 
 //        16. Verify success message 'Your order has been placed successfully!'
-        WebElement mesage = driver.findElement(By.xpath("//div[@class='alert-success alert']"));
-        Assert.assertTrue(mesage.isDisplayed());
+        WebElement message = driver.findElement(By.xpath("((//div[@class='col-md-4'])[2]//div[@class='col-md-12 form-group'])[1]"));
+//        WebElement message = driver.findElement(By.xpath("//div[@class='col-md-12 form-group hide']"));
+
+
+//      JavascriptExecutor js = (JavascriptExecutor) driver;
+//        WebElement message = (WebElement) js.executeScript("return document.querySelector('col-md-12 form-group')");
+        Assert.assertTrue(message.isDisplayed());
 
 //        17. Click 'Delete Account' button
         driver.findElement(By.xpath("//a[@href='/delete_account']")).click();

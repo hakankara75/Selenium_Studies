@@ -64,6 +64,7 @@ public class C01 extends TestBase {
 //    -Excel dosyasından aldığımız kullanıcı bilgileri ile login olalım
         String userHome = System.getProperty("user.home"); //dosyanin kok kismini aldim
         String dosyaYolu = "/Desktop/data.xlsx"; //okunacak dosyanin yolunu aldim
+
         //Dosyayi al:
         FileInputStream fileInputStream = new FileInputStream(userHome + dosyaYolu);
 
@@ -92,6 +93,6 @@ public class C01 extends TestBase {
         String userName = findByXpathString("//button[@id='dropdown-basic-button']");
         String expectedUserName = "Erol Evren";
 
-        asserTextContainsAssertTrue(expectedUserName, userName);
+        assertTextContainsAssertTrue(expectedUserName, userName);
     }
 }

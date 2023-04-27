@@ -29,7 +29,7 @@ pageDown();
 threadSleep(2);
 String actualAll=findByXpathString("//h2[text()='All Products']");
 String expectedAll="ALL PRODUCTS";
-asserTextContainsAssertTrue(actualAll,expectedAll);
+assertTextContainsAssertTrue(actualAll,expectedAll);
 
 //        5. Click on 'View Product' button
         pageDown();
@@ -41,7 +41,7 @@ asserTextContainsAssertTrue(actualAll,expectedAll);
 arrowDown();
 String actualWrite=findByXpathString("//a[@href='#reviews']");
 String expectedWrite="WRITE YOUR REVIEW";
-asserTextContainsAssertTrue(actualWrite, expectedWrite);
+assertTextContainsAssertTrue(actualWrite, expectedWrite);
 
 //        7. Enter name, email and review
         arrowDown();arrowDown();
@@ -63,7 +63,7 @@ asserTextContainsAssertTrue(actualWrite, expectedWrite);
 //        9. Verify success message 'Thank you for your review.'
         String a=findByXpathString("//span[@style='font-size: 20px;']");
         String b="Thank you for your review.";
-        asserTextContainsAssertTrue(a, b);
+        assertTextContainsAssertTrue(a, b);
 
         //2.yol
                 WebElement message= findXpathWebelement("//span[@style='font-size: 20px;']");

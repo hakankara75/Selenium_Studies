@@ -31,7 +31,7 @@ assertDisplayedWebelement(logoText);
 //2.yol
 String actualText= findByXpathString("//h3[text()='File Uploaded!']");
         String expectedText="File Uploaded!";
-asserTextContainsAssertTrue(actualText, expectedText);
+assertTextContainsAssertTrue(actualText, expectedText);
 
     }
 }

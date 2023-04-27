@@ -8,8 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.TestBase;
 
-import javax.swing.text.html.parser.TagElement;
-
 import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
@@ -40,7 +38,7 @@ public class C01 extends TestBase {
         actions.scrollToElement(actualRecomm).perform();
         String actualRecommended = findByXpathString("//h2[text()='recommended items']");
         String expectedRecommended = "RECOMMENDED ITEMS";
-        asserTextContainsAssertTrue(actualRecommended, expectedRecommended);
+        assertTextContainsAssertTrue(actualRecommended, expectedRecommended);
 
 //        5. Click on 'Add To Cart' on Recommended product
         pageDown();
@@ -57,7 +55,7 @@ public class C01 extends TestBase {
 //        7. Verify that product is displayed in cart page
         String actualBlueTop = findByXpathString("//a[@href='/product_details/1']");
         String expectedBlueTop = "Blue Top";
-        asserTextContainsAssertTrue(actualBlueTop, expectedBlueTop);
+        assertTextContainsAssertTrue(actualBlueTop, expectedBlueTop);
 
 
     }

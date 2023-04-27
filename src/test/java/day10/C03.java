@@ -48,7 +48,7 @@ public class C03 extends TestBase {
 //        6. Verify 'Logged in as username' at top
         String logged = findByXpathString("//b[text()='ab']");
         String memberName = "ab";
-        asserTextContainsAssertTrue(logged, memberName);
+        assertTextContainsAssertTrue(logged, memberName);
 
 //        7. Add products to cart
         pageDown();
@@ -73,12 +73,12 @@ public class C03 extends TestBase {
 //        11. Verify Address Details and Review Your Order
         String address = findByXpathString("(//h2[@class='heading'])[1]");
         String addr = "Address Details";
-        asserTextContainsAssertTrue(address, addr);
+        assertTextContainsAssertTrue(address, addr);
 
         pageDown();
         String order = findByXpathString("(//h2[@class='heading'])[2]");
         String ord = "Review Your Order";
-        asserTextContainsAssertTrue(order, ord);
+        assertTextContainsAssertTrue(order, ord);
 
 //        12. Enter description in comment text area and click 'Place Order'
         pageDown();
@@ -119,7 +119,7 @@ public class C03 extends TestBase {
 //        17. Verify 'ACCOUNT DELETED!' and click 'Continue' button
         String deleted = findByXpathString("//b[text()='Account Deleted!']");
         String messageText = "ACCOUNT DELETED!";
-        asserTextContainsAssertTrue(deleted, messageText);
+        assertTextContainsAssertTrue(deleted, messageText);
 
     }
 }

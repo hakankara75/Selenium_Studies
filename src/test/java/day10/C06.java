@@ -1,9 +1,7 @@
 package day10;
 
 import org.junit.Test;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import utilities.TestBase;
 
 /*
@@ -30,7 +28,7 @@ public class C06 extends TestBase {
         threadSleep(3);
         String actualBrands = findByXpathString("//h2[text()='Brands']");
         String expectedBrands = "BRANDS";
-        asserTextContainsAssertTrue(actualBrands, expectedBrands);
+        assertTextContainsAssertTrue(actualBrands, expectedBrands);
         pageDown();
 
 //        5. Click on any brand name
@@ -43,7 +41,7 @@ public class C06 extends TestBase {
         arrowDown();
         String actualBrand = findByXpathString("//h2[@class='title text-center']");
         String expectedBrand = "BRAND - KOOKIE KIDS PRODUCTS";
-        asserTextContainsAssertTrue(actualBrand, expectedBrand);
+        assertTextContainsAssertTrue(actualBrand, expectedBrand);
 
 
 //        7. On left side bar, click on any other brand link
@@ -59,7 +57,7 @@ public class C06 extends TestBase {
         threadSleep(2);
         String actualBabyhug = findByXpathString("//h2[text()='Brand - Babyhug Products']");
         String expectedBabyhug = "BRAND - BABYHUG PRODUCTS";
-        asserTextContainsAssertTrue(actualBabyhug, expectedBabyhug);
+        assertTextContainsAssertTrue(actualBabyhug, expectedBabyhug);
 
        arrowDown();
         threadSleep(2);

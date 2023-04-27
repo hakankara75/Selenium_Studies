@@ -2,7 +2,6 @@ package day10;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 /*
@@ -32,7 +31,7 @@ public class C07 extends TestBase {
         threadSleep(2);
         String actualAll=findByXpathString("//h2[text()='All Products']");
         String expectedAll="ALL PRODUCTS";
-        asserTextContainsAssertTrue(actualAll,expectedAll);
+        assertTextContainsAssertTrue(actualAll,expectedAll);
 
 //        5. Enter product name in search input and click search button
 WebElement search=driver.findElement(By.id("search_product"));
@@ -43,7 +42,7 @@ driver.findElement(By.id("submit_search")).click();
 threadSleep(2);
 String actualSearch=findByXpathString("//h2[text()='Searched Products']");
 String expectedSearch="SEARCHED PRODUCTS";
-asserTextContainsAssertTrue(actualSearch,expectedSearch);
+assertTextContainsAssertTrue(actualSearch,expectedSearch);
 
 //        7. Verify all the products related to search are visible
         arrowDown();arrowDown();
