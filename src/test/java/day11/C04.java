@@ -179,8 +179,12 @@ threadSleep(2);
         driver.findElement(By.id("submit")).click();
 
 //        18. Verify success message 'Your order has been placed successfully!'
-        WebElement alert = driver.findElement(By.xpath("//div[@class='alert-success alert']"));
-        Assert.assertTrue(alert.isDisplayed());
+//        WebElement alert = driver.findElement(By.xpath("//div[@class='alert-success alert']"));
+//        Assert.assertTrue(alert.isDisplayed());
+        WebElement successMessage = driver.findElement(By.xpath("//div[@id='success_message']/div"));
+        String expectedMessage = "Your order has been placed successfully!";
+        String actualMessage = successMessage.getText();
+        Assert.assertEquals(actualMessage, expectedMessage);
 
 //        19. Click 'Download Invoice' button and verify invoice is downloaded successfully.
        findByXpathClick("//a[@href='/download_invoice/0']");
