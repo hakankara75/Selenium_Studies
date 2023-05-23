@@ -58,7 +58,7 @@ public abstract class TestBase {
     public void tearDown() throws Exception {
         extentReports.flush(); //Extent Report icin
         Thread.sleep(3000);
-        driver.quit();
+        //driver.quit();
     }
 
     public static void threadSleep(int sleep) {
