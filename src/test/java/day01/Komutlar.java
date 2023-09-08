@@ -4,8 +4,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
-import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class Komutlar {
     public static void main(String[] args) throws InterruptedException {
@@ -14,7 +13,7 @@ public class Komutlar {
 
 
         driver.get("https://www.hepsiburada.com"); //verilen adresteki siteyi acar
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); //sayfanin tum web elementlerinin acilmasi
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); //sayfanin tum web elementlerinin acilmasi
         //icin verilen surede bekler. site acilmazsa hata verir.
 
 

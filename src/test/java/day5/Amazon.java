@@ -9,11 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Amazon {
     WebDriver driver;
@@ -23,7 +20,7 @@ public class Amazon {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         //    -Amazon sayfasına gidelim
         driver.get("http://amazon.com");

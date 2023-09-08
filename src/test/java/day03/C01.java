@@ -6,9 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.time.Duration;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class C01 {
     WebDriver driver;
@@ -18,7 +17,7 @@ public class C01 {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
 

@@ -6,9 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
-import java.time.Duration;
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Xpath_CssSelector {
     public static void main(String[] args) throws InterruptedException {
@@ -16,7 +14,7 @@ public class Xpath_CssSelector {
         WebDriver driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*"));
 
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         driver.get("https://www.n11.com");
         Thread.sleep(10000);
