@@ -1,6 +1,6 @@
 package day5;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +14,7 @@ public class Deneme {
     static WebDriver driver;
     @BeforeClass
     public static void launchBrw(){
-        WebDriverManager.chromedriver().setup();
+
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

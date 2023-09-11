@@ -1,6 +1,5 @@
 package day10;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;

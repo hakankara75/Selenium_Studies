@@ -1,6 +1,6 @@
 package day4;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +21,7 @@ public class Google {
     @BeforeClass
     public static void beforeClass() {
         //    -BeforeClass methodu ile driver ı olusturun ve Maximize edin, 15 sn bekletin
-        WebDriverManager.chromedriver().setup();
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

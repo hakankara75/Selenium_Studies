@@ -1,6 +1,5 @@
 package day02;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Manage {
     public static void main(String[] args) {
-        WebDriverManager.chromedriver().setup();
+
         WebDriver driver= new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
