@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import utilities.TestBase;
 
-public class C extends TestBase{
+public class C04_CheckBox extends TestBase{
     @Test
     public void name() {
         driver.get("http://www.automationpractice.pl/index.php");
